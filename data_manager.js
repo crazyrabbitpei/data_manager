@@ -163,7 +163,7 @@ app.get('/'+server_name+'/:key/'+server_version+'/botmanager/:action(init|new|de
             //flag:error(has exist),insert(not exist and insert ok)
             if(flag=='error'){
                 console.log('[insertBotID] ['+back_id+'] error:'+err_msg);
-                sendResponse(res,200,action,'false',back_id+' has exist','');
+                sendResponse(res,200,action,'false','',back_id+' has exist');
                 write2Log('log','process','from '+req.ip+', '+action+' fail');
             }
             else{
@@ -177,7 +177,7 @@ app.get('/'+server_name+'/:key/'+server_version+'/botmanager/:action(init|new|de
         updateBotID(id,status,(flag,back_id,stat,pre_stat,err_msg)=>{
             if(flag=='error'){
                 console.log('[updateBotID] ['+back_id+'] error:'+err_msg);
-                sendResponse(res,200,action,'false',back_id+' not exist','');
+                sendResponse(res,200,action,'false','',back_id+' not exist');
                 write2Log('log','process','from '+req.ip+', '+action+' fail');
             }
             else{
@@ -192,7 +192,7 @@ app.get('/'+server_name+'/:key/'+server_version+'/botmanager/:action(init|new|de
             //flag:error(not exist),delete(exist and delete ok)
             if(flag=='error'){
                 console.log('[deleteBotID] ['+back_id+'] error:'+err_msg)
-                sendResponse(res,200,action,'false',back_id+' not exist','');
+                sendResponse(res,200,action,'false','',back_id+' not exist');
                 write2Log('log','process','from '+req.ip+', '+action+' fail');
             }
             else{
@@ -207,7 +207,7 @@ app.get('/'+server_name+'/:key/'+server_version+'/botmanager/:action(init|new|de
         searchBotID(id,(flag,back_id,stat,err_msg)=>{
             //flag:error(not exist),search(exist)
             if(flag=='error'){
-                sendResponse(res,200,action,'false',back_id+' not exist','');
+                sendResponse(res,200,action,'false','',back_id+' not exist');
                 write2Log('log','process','from '+req.ip+', '+action+' fail');
             }
             else{
