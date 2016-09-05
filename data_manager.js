@@ -106,7 +106,6 @@ app.post('/'+server_name+'/:key/'+server_version+'/uploaddata/:type(fb|ptt)',(re
         });
     });
     req.on('end', function(data){
-        console.log('--read end--');
         /*recording ip and datasize*/
         write2Log('log','process','from '+req.ip+', upload success:'+size);
         sendResponse(res,200,action,'ok','','');
@@ -372,7 +371,7 @@ function write2Log(cata,type,msg)
                 console.log("[err] can't write to "+dir+" err:"+err);
             }
             else{
-                console.log('[done] write to '+dir);
+                //console.log('[done] write to '+dir);
             }
         });
     }
